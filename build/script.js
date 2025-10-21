@@ -1,3 +1,5 @@
+import { Game } from "./Classes/Games.js";
+var game = new Game();
 var gameName = "EarthDefender";
 console.log(gameName);
 window.onload = main;
@@ -49,10 +51,17 @@ function main() {
         context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         context.fillStyle = '#141414';
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        for (var _i = 0, aliens_1 = aliens; _i < aliens_1.length; _i++) {
-            var alien = aliens_1[_i];
-            context.drawImage(alien.image, alien.position.x, alien.position.y, alien.image.width, alien.image.height);
-        }
+        //    for(const alien of aliens){
+        // context.drawImage(
+        // alien.image,
+        // alien.position.x,  
+        // alien.position.y,
+        // alien.image.width,
+        // alien.image.height
+        // );
+        // 
+        // 
+        // }
         for (var i = 0; i < nbAliens; i++) {
             aliens.push(new GameObject(alienImage, {
                 x: Math.random() * 800,

@@ -1,9 +1,12 @@
+import { Game } from "./Classes/Games.js";
+
+const game = new Game();
 let gameName: string = "EarthDefender";
 console.log(gameName);
 
 window.onload = main;
 function main() {
-
+    
     const CANVAS_WIDTH = 900;
     const CANVAS_HEIGHT = 500;
 
@@ -26,30 +29,27 @@ function main() {
 
     let direction: Direction = 0;
 
-
-
-
-
-
     
     
     
     
-    class GameObject{
-        image : HTMLImageElement;
-        position : Position;
-        constructor(image : HTMLImageElement,position : Position){
+    
+
+    class GameObject {
+        image: HTMLImageElement;
+        position: Position;
+        constructor(image: HTMLImageElement, position: Position) {
             this.image = image;
             this.position = position;
         }
     }
-    interface Position{
-        x : number,
-        y : number
-        
+    interface Position {
+        x: number,
+        y: number
+
     };
-    
-    
+
+
     const nbAliens: number = 10;
     const alienImage: HTMLImageElement = document.querySelector("img.alien");
 
@@ -115,26 +115,26 @@ function main() {
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
 
-           for(const alien of aliens){
-            context.drawImage(
-                alien.image,
-                alien.position.x,  
-                alien.position.y,
-                alien.image.width,
-                alien.image.height
-            );
-        
-
+        //    for(const alien of aliens){
+        // context.drawImage(
+        // alien.image,
+        // alien.position.x,  
+        // alien.position.y,
+        // alien.image.width,
+        // alien.image.height
+        // );
+        // 
+        // 
+        // }
+        for (let i = 0; i < nbAliens; i++) {
+            aliens.push(new GameObject(
+                alienImage,
+                {
+                    x: Math.random() * 800,
+                    y: 0
+                }
+            ));
         }
-        for(let i = 0; i<nbAliens; i++){
-    aliens.push(new GameObject(
-        alienImage,
-        { 
-            x : Math.random()*800, 
-            y:0 
-        }
-    ));
-}
 
         context.drawImage(
             image,
@@ -206,4 +206,6 @@ function main() {
                 break;
         }
     });
+    
+    
 } 
